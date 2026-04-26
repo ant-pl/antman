@@ -3,7 +3,7 @@ use std::sync::Arc;
 use std::time::Duration;
 use anyhow::{Context, Result};
 use futures::{stream, StreamExt};
-use reqwest::{Client, Response};
+use reqwest::Client;
 use tokio::fs::File;
 use tokio::io::AsyncWriteExt;
 use tokio::sync::Semaphore;

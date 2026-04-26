@@ -2,13 +2,13 @@ use zip::ZipArchive;
 use std::fs::File;
 use std::path::Path;
 
-pub fn unzip<P: AsRef<Path>>(file_path: P, unzip_path: P) -> Result<(), std::io::Error> {
+pub fn unzip<P: AsRef<Path>>(file_path: P, unzip_dir: P) -> Result<(), std::io::Error> {
     let file = File::open(file_path)?;
     let mut archive = ZipArchive::new(file)?;
     
     for i in 0..archive.len() {
         let mut file = archive.by_index(i)?;
-        let outpath = unzip_path.as_ref().join(file.mangled_name());
+        let outpath = unzip_dir.as_ref().join(file.mangled_name());
         
         if file.is_dir() {
             std::fs::create_dir_all(&outpath)?;
