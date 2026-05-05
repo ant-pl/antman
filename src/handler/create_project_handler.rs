@@ -40,13 +40,11 @@ pub(crate) async fn create_project_handler(
     antman_toml["package"] = table();
     antman_toml["package"]["name"] = project_name.clone().into();
     antman_toml["package"]["version"] = "0.1.0".into();
-    antman_toml["package"]["edition"] = "2026".into();
 
     if project_kind == "lib" {
         antman_toml[&project_kind] = table();
         antman_toml[&project_kind]["name"] = project_name.into();
         antman_toml[&project_kind]["version"] = "0.1.0".into();
-        antman_toml[&project_kind]["edition"] = "2026".into();
     }
 
     std::fs::write(project_toml_file, antman_toml.to_string()).map_err(|it| it)?;

@@ -61,7 +61,7 @@ pub enum CrateKind {
 pub struct Package {
     pub name: String,
     pub version: String,
-    pub edition: String,
+    // pub edition: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -69,7 +69,7 @@ pub struct Package {
 pub struct Lib {
     pub name: String,
     pub version: String,
-    pub edition: String,
+    // pub edition: String,
 }
 
 pub fn load_crate(path: &std::path::Path) -> Result<CrateConfig, toml::de::Error> {
